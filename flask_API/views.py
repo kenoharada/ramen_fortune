@@ -1,4 +1,5 @@
-from flask import request, redirect, url_for, render_template, flash
+import json
+from flask import request, redirect, url_for, render_template, flash,jsonify
 from ramen import app, db
 from ramen.models import Entry
 
@@ -9,23 +10,31 @@ def show_entries():
 
 @app.route('/answer', methods=['POST'])
 def add_entry():
+    json = request.get_json()
     entry = Entry(
-            id=request.form['id'],
-            q1=request.form['q1'],
-            q2=request.form['q2'],
-            q3=request.form['q3'],
-            q4=request.form['q4'],
-            q5=request.form['q5'],
-            q6=request.form['q6'],
-            q7=request.form['q7'],
-            q8=request.form['q8'],
-            q9=request.form['q9'],
-            q10=request.form['q10']
+            id=json['id'],
+            q1=json['q1'],
+            q2=json['q2'],
+            q3=json['q3'],
+            q4=json['q4'],
+            q5=json['q5'],
+            q6=json['q6'],
+            q7=json['q7'],
+            q8=json['q8'],
+            q9=json['q9'],
+            q10=json['q10'],
+            q11=json['q11'],
+            q12=json['q12'],
+            q13=json['q13'],
+            q14=json['q14'],
+            q15=json['q15']
             )
     db.session.add(entry)
     db.session.commit()
+
+
     #flash('New entry was successfully posted')
-    Id = id=request.form['id']
+    #Id = id=request.form['id']
     ##return redirect('/result/{int}',Id) #下の関数へ飛ばす
 
 
@@ -40,5 +49,8 @@ def calc_result(Id):
     #
     #
 
+    your_ramen = 3
 
-    return render_template("結果表示するページ","送信する結果")
+    result = {"result" : your_ramen}
+
+    return jsonify(result)
