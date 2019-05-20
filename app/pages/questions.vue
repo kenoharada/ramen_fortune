@@ -6,7 +6,7 @@
       :key="qustion"
     >
       <p v-text="question" />
-      <el-radio-group v-model="answers[index]">
+      <el-radio-group v-model="answers[questionNumber(index)]">
         <el-radio :label="2">はい</el-radio>
         <el-radio :label="1">どちらでもない</el-radio>
         <el-radio :label="0">いいえ</el-radio>
@@ -53,46 +53,49 @@ export default {
         '他人には、笑顔で接触するように心がけている。',
         '他人には、笑顔で接触するように心がけている。',
       ],
-      answers: [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-      ],
-      // answers: {
-      //   q1: 0,
-      //   q2: 1,
-      //   q3: 1,
-      //   q4: 1,
-      //   q5: 1,
-      //   q6: 1,
-      //   q7: 1,
-      //   q8: 1,
-      //   q9: 1,
-      //   q10: 1,
-      //   q11: 1,
-      //   q12: 1,
-      //   q13: 1,
-      //   q14: 1,
-      //   q15: 1,
-      // },
+      // answers: [
+      //   null,
+      //   null,
+      //   null,
+      //   null,
+      //   null,
+      //   null,
+      //   null,
+      //   null,
+      //   null,
+      //   null,
+      //   null,
+      //   null,
+      //   null,
+      //   null,
+      //   null,
+      // ],
+      answers: {
+        q1: null,
+        q2: null,
+        q3: null,
+        q4: null,
+        q5: null,
+        q6: null,
+        q7: null,
+        q8: null,
+        q9: null,
+        q10: null,
+        q11: null,
+        q12: null,
+        q13: null,
+        q14: null,
+        q15: null,
+      },
     };
   },
   methods: {
     async sendAnswers() {
       await axios.post('/api/answer', JSON.stringify(this.answers)).catch(console.error());
       this.$router.push('/results');
+    },
+    questionNumber(number) {
+      return `q${number}`;
     },
   },
 };
