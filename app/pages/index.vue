@@ -1,68 +1,77 @@
 <template>
-  <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        app
-      </h1>
-      <h2 class="subtitle">
-        Basic Project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
-      </div>
-    </div>
-  </section>
+  <div class="topPage">
+    <logo />
+    <h1　class="topPage__title">
+      Ramen Fortune
+    </h1>
+    <h2 class="topPage__description">
+      Find the ramen representing your character.
+    </h2>
+    <nuxt-link
+      class="topPage__link"
+      to="/questions"
+    >
+      <el-button
+        type="info"
+        class="topPage__button"
+      >
+        <i class="el-icon-caret-right topPage__buttonIcon" /> 診断を始める
+      </el-button>
+    </nuxt-link>
+  </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Logo from '~/components/Logo.vue';
 
 export default {
   components: {
     Logo
-  }
-}
+  },
+  data() {
+    return {
+      questionList: [
+        '他人には、絵以上で接触するように心がけている。',
+      ],
+      answerList: [],
+    };
+  },
+  head() {
+    return {
+      title: 'Ramen Fortune',
+    };
+  },
+};
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
+<style lang="scss">
+.topPage {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-}
+  font-family: fantasy;
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+  &__title {
+    font-size: 30px;
+  }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
+  &__description {
+    font-size: 20px;
+  }
 
-.links {
-  padding-top: 15px;
+  &__link {
+    display: block;
+    margin-top: 50px;
+    font-size: 20px;
+  }
+
+  &__button {
+    padding: 5px;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+  }
 }
 </style>
