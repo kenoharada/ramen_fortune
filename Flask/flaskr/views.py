@@ -27,9 +27,31 @@ def add_answer():
 
     x = np.array([int(q1),int(q2),int(q3),int(q4),int(q5),int(q6),int(q7),int(q8),int(q9),int(q10)])
 
-    mean = x.sum()
-    i = (mean*1402)%3
-    ans = ["二郎タイプ","家系タイプ","博多系タイプ"]
-    result = {"result":ans[i]}
-
+    scores = {"np":x[0],"cp":x[1],"ac":x[2],"a":x[3],"fc":x[4]}
+    
+    result = {"result":algo_ego2(scores)}
+    
     return render_template('show_result.html',entries=result)
+
+def algo_ego2(scores):
+    if (scores['np'] > scores['cp']) and (max(scores.values()) == scores['np']) and (min(scores.values()) == min([scores['cp'], scores['ac']])) and (scores['a'] >= scores['fc'] >= scores['ac']):
+        ego = 1
+    elif (min([scores['np'], scores['ac']]) >= scores['a']) and (max([scores['cp'], scores['fc']]) <= scores['a']):
+        ego = 2
+    elif (max([scores['np'], scores['ac']]) <= scores['a']) and (min([scores['cp'], scores['fc']]) >= scores['a']):
+        ego = 3
+    elif (min([scores['cp'], scores['ac']]) >= scores['np']) and (max([scores['a'], scores['fc']]) <= scores['np']):
+        ego = 4
+    elif min([scores['cp'], scores['a'], scores['ac']]) >=max([scores['np'], scores['fc']]):
+        ego = 5
+    elif min([scores['np'], scores['fc']]) >=max([scores['cp'], scores['a'], scores['ac']]):
+        ego = 6
+    elif (scores['a'] >= max([scores['np'], scores['fc']])) and (min([scores['np'], scores['fc']]) >= max([scores['cp'], scores['ac']])):
+        ego = 7
+    elif scores['cp'] >= scores['np'] >= scores['a'] >= scores['fc'] >= scores['ac']:
+        ego = 8
+    elif scores['cp'] <= scores['np'] <= scores['a'] <= scores['fc'] <= scores['ac']:
+        ego = 9
+    else:
+        ego = 10
+    return ego
