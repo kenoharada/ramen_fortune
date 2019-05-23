@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block body %}
+  <form action="{{ url_for('add_answer') }}" method=post class=add-entry>
+    <dl>
+      <p>Question1<br>
+        <input type="radio" name="q1" value="0"> その1
+        <input type="radio" name="q1" value="1"> その2
+      </p>
+
+      <p>Question2<br>
+        <input type="radio" name="q2" value="0"> その1
+        <input type="radio" name="q2" value="1"> その2
+      </p>
+
+      <p>Question3<br>
+        <input type="radio" name="q3" value="0"> その1
+        <input type="radio" name="q3" value="1"> その2
+      </p>
+
+      <p>Question4<br>
+        <input type="radio" name="q4" value="0"> その1
+        <input type="radio" name="q4" value="1"> その2
+      </p>
+
+      <p>Question5<br>
+        <input type="radio" name="q5" value="0"> その1
+        <input type="radio" name="q5" value="1"> その2
+      </p>
+
+      <p>Question6<br>
+        <input type="radio" name="q6" value="0"> その1
+        <input type="radio" name="q6" value="1"> その2
+      </p>
+
+      <p>Question7<br>
+        <input type="radio" name="q7" value="0"> その1
+        <input type="radio" name="q7" value="1"> その2
+      </p>
+
+      <p>Question8<br>
+        <input type="radio" name="q8" value="0"> その1
+        <input type="radio" name="q8" value="1"> その2
+      </p>
+
+      <p>Question9<br>
+        <input type="radio" name="q9" value="0"> その1
+        <input type="radio" name="q9" value="1"> その2
+      </p>
+
+      <p>Question10<br>
+        <input type="radio" name="q10" value="0"> その1
+        <input type="radio" name="q10" value="1"> その2
+      </p>
+
+      <input type=submit value=Share>
+    </dl>
+  </form>
+
+{% endblock %}
