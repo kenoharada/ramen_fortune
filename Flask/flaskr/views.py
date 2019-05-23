@@ -31,7 +31,7 @@ def add_answer():
     
     result = {"result":algo_ego2(scores)}
     
-    return render_template('show_result.html',entries=result)
+    return jsonify(result)
 
 def algo_ego2(scores):
     if (scores['np'] > scores['cp']) and (max(scores.values()) == scores['np']) and (min(scores.values()) == min([scores['cp'], scores['ac']])) and (scores['a'] >= scores['fc'] >= scores['ac']):
