@@ -192,6 +192,7 @@ export default {
     scoreList() {
       const scoreList = [0, 0, 0, 0, 0];
       for (let i = 0; i < 5; i ++) {
+        // typeIdごとにスコアを取り出す
         let typeScoreList = this.answers.filter(answer => answer.typeId === i).map(answer => answer.score);
         typeScoreList.forEach(typeScore => scoreList[i] += typeScore);
       }
