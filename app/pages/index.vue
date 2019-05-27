@@ -1,12 +1,10 @@
 <template>
   <div class="topPage">
-    <logo />
-    <h1　class="topPage__title">
-      Ramen Fortune
-    </h1>
-    <h2 class="topPage__description">
-      Find the ramen representing your character.
-    </h2>
+    <img
+      class="topPage__logo"
+      src="~/static/logo.png"
+      alt="Ramen Fortune"
+    >
     <nuxt-link
       class="topPage__link"
       to="/questions"
@@ -22,12 +20,7 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue';
-
 export default {
-  components: {
-    Logo
-  },
   data() {
     return {
       questionList: [
@@ -36,22 +29,22 @@ export default {
       answerList: [],
     };
   },
-  head() {
-    return {
-      title: 'Ramen Fortune',
-    };
-  },
 };
 </script>
 
 <style lang="scss">
 .topPage {
-  min-height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: fantasy;
+
+  &__logo {
+    width: 450px;
+    height: 450px;
+  }
 
   &__title {
     font-size: 30px;
