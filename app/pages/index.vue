@@ -13,24 +13,11 @@
         type="info"
         class="topPage__button"
       >
-        <i class="el-icon-caret-right topPage__buttonIcon" /> 診断を始める
+        <i class="el-icon-caret-right" /> 診断を始める
       </el-button>
     </nuxt-link>
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      questionList: [
-        '他人には、絵以上で接触するように心がけている。',
-      ],
-      answerList: [],
-    };
-  },
-};
-</script>
 
 <style lang="scss">
 .topPage {
@@ -65,6 +52,16 @@ export default {
     width: 200px;
     height: 50px;
     font-size: 20px;
+  }
+}
+
+.el-button {
+  color: white;
+  background-color: rgba(76, 175, 80, 1);
+
+  &:hover {
+    color: rgba(76, 175, 80, 1);
+    background-color: rgba(76, 175, 80, 0.4);
   }
 }
 </style>
