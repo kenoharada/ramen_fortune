@@ -16,32 +16,19 @@
             class="questions__item"
             v-model="answers[index]"
           >
-            <el-radio-button
-              :label="{ score: 2, typeId: question.typeId }"
-              @click="counter"
-            >
+            <el-radio-button :label="{ score: 2, typeId: question.typeId }">
               はい
             </el-radio-button>
-            <el-radio-button
-              :label="{ score: 1, typeId: question.typeId }"
-              @click="counter"
-            >
+            <el-radio-button :label="{ score: 1, typeId: question.typeId }">
               どちらでもない
             </el-radio-button>
-            <el-radio-button
-              :label="{ score: 0, typeId: question.typeId }"
-              @click="counter"
-            >
+            <el-radio-button :label="{ score: 0, typeId: question.typeId }">
               いいえ
             </el-radio-button>
           </el-radio-group>
         </div>
       </div>
     </div>
-    <!-- {{ answers }}
-    {{ allAnswered }}
-    {{ scoreList }}
-    {{ answerNum }} -->
     <div
       class="questions__toResults"
     >
@@ -182,16 +169,16 @@ export default {
           typeId: null,
         },
       ],
-      answerNum: 0,
     };
   },
   computed: {
     allAnswered() {
-      return this.answerNum === this.questionList.length;
+      return this.answers.filter(item => item.score !== null).length === this.answers.length;
     },
     scoreList() {
       const scoreList = [0, 0, 0, 0, 0];
       for (let i = 0; i < 5; i ++) {
+        // typeIdごとにスコアを取り出す
         let typeScoreList = this.answers.filter(answer => answer.typeId === i).map(answer => answer.score);
         typeScoreList.forEach(typeScore => scoreList[i] += typeScore);
       }
@@ -200,16 +187,13 @@ export default {
   },
   methods: {
     async sendAnswers() {
-      if (true) {
-        // await axios.post('/api/answer', JSON.stringify(this.answers)).catch(console.error());
+      if (this.allAnswered) {
         this.$store.commit('setRawResult', this.scoreList);
         this.$router.push('/results');
       } else {
+        // 全ての質問に答えていない場合
         alert('全ての質問にお答えください');
       }
-    },
-    counter() {
-      this.answerNum += 1;
     },
   },
 };
