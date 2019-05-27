@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .topPage {
   height: 90vh;
   display: flex;
