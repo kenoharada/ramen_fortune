@@ -109,9 +109,9 @@ export default {
           return 6;
       } else if ((scores['a'] >= Math.max(scores['np'], scores['fc'])) && (Math.min(scores['np'], scores['fc']) >= Math.max(scores['cp'], scores['ac']))){
         return 7;
-      } else if (scores['cp'] >= scores['np'] >= scores['a'] >= scores['fc'] >= scores['ac']){
+      } else if ((scores['cp'] >= scores['np']) && (scores['np']>= scores['a']) && (scores['a']>= scores['fc']) &&  (scores['fc']>= scores['ac'])){
         return 8;
-      } else if (scores['cp'] <= scores['np'] <= scores['a'] <= scores['fc'] <= scores['ac']){
+      } else if ((scores['cp'] <= scores['np']) && (scores['np']<= scores['a']) && (scores['a']<= scores['fc']) &&  (scores['fc']<= scores['ac'])){
         return 9;
       } else {
         return 10;
