@@ -116,7 +116,7 @@ export default {
       } else {
         return 10;
       }
-    }
+    },
     ramenImgUrl(ramenId) {
       return `/ramenPictures/ramen_${ramenId}.jpg`;
     },
