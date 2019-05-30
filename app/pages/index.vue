@@ -21,7 +21,6 @@
 
 <style scoped lang="scss">
 .topPage {
-  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,6 +61,17 @@
   &:hover {
     color: rgba(76, 175, 80, 1);
     background-color: rgba(76, 175, 80, 0.4);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topPage {
+    margin-top: calc(50vh - 30px - 50%);
+
+    &__logo {
+      width: 200px;
+      height: 200px;
+    }
   }
 }
 </style>

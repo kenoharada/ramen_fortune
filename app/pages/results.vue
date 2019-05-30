@@ -1,6 +1,6 @@
 <template>
   <div class="result">
-    <h1>あなたのラーメンは。。。</h1>
+    <h1 class="result__heading">あなたのラーメンは。。。</h1>
     <div class="result__contents">
       <div
         class="result__ramenName"
@@ -130,15 +130,14 @@ export default {
 <style scoped lang="scss">
 .result {
   margin: 50px;
-  min-height: 90vh;
 
   &::before {
     content: '';
-    width: 1000px;
-    height: 1000px;
+    width: 100vh;
+    height: calc(100vh - 180px);
     position: fixed;
-    top: calc(50% - 500px);
-    left: calc(50% - 500px);
+    top: calc(50% - 50vh + 90px);
+    left: calc(50% - 50vh);
     background-image: url('/logo.png');
     background-repeat: no-repeat;
     background-size: 100%;
@@ -180,6 +179,35 @@ export default {
       width: 200px;
       height: 50px;
       font-size: 15px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .result {
+    margin: 20px;
+
+    &::before {
+      width: 90vw;
+      height: calc(90vw - 80px);
+      top: calc(50% - 45vw + 40px);
+      left: calc(50% - 45vw);
+    }
+
+    &__heading {
+      font-size: 24px;
+    }
+
+    &__ramenName {
+      font-size: 32px;
+    }
+
+    &__ramenImage {
+      margin: auto;
+    }
+
+    &__toTopPage {
+      margin: 20px auto;
     }
   }
 }
