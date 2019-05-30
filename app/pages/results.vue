@@ -181,6 +181,16 @@ export default {
       font-size: 15px;
     }
   }
+
+  .el-button {
+    color: white;
+    background-color: rgba(76, 175, 80, 1);
+
+    &:hover {
+      color: rgba(76, 175, 80, 1);
+      background-color: rgba(76, 175, 80, 0.4);
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
