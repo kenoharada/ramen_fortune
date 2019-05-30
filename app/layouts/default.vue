@@ -1,12 +1,5 @@
 <template>
   <div>
-    <!-- <div class="header">
-      <img
-        class="header__logo"
-        src="/logo.png"
-        alt="Ramen Fortune"
-      >
-    </div> -->
     <div class="app-page">
       <img
         class="app-page__background"
@@ -31,28 +24,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.header {
-  position: relative;
-  width: 100%;
-  height: 100px;
-  background-color: rgba(1, 1, 1, 0.5);
-
-  &::before {
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 10;
-  }
-
-  &__logo {
-
-  }
-}
-
-
 .app-page {
+  width: 100vw;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,9 +34,7 @@ export default {
   &__background {
     position: fixed;
     top: 0;
-    bottom: 0;
     left: 0;
-    right: 0;
     filter: blur(10px);
     margin: -10px;
     width: calc(100% + 20px);
@@ -72,8 +44,22 @@ export default {
 
   &__contents {
     width: 80%;
-    margin: 100px auto;
+    min-height: calc(100vh - 160px);
+    margin: 80px auto;
     background-color: white;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .app-page {
+    display: flex;
+    align-items: center;
+    
+    &__contents {
+      width: 90%;
+      min-height: calc(100vh - 60px);
+      margin: 30px auto;
+    }
   }
 }
 </style>

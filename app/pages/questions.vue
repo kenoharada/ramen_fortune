@@ -13,13 +13,13 @@
         </div>
         <div>
           <el-radio-group
-            class="questions__item"
+            class="questions__radio"
             v-model="answers[index]"
           >
             <el-radio-button :label="{ score: 2, typeId: question.typeId }">
               はい
             </el-radio-button>
-            <el-radio-button :label="{ score: 1, typeId: question.typeId }">
+            <el-radio-button :label="{ score: 1, typeId: question.typeId }" class="question__radio__middle">
               どちらでもない
             </el-radio-button>
             <el-radio-button :label="{ score: 0, typeId: question.typeId }">
@@ -211,11 +211,11 @@ export default {
 
   &::before {
     content: '';
-    width: 1000px;
-    height: 1000px;
+    width: 100vh;
+    height: calc(100vh - 180px);
     position: fixed;
-    top: calc(50% - 500px);
-    left: calc(50% - 500px);
+    top: calc(50% - 50vh + 90px);
+    left: calc(50% - 50vh);
     background-image: url('/logo.png');
     background-repeat: no-repeat;
     background-size: 100%;
@@ -271,5 +271,34 @@ export default {
   background-color: rgba(76, 175, 80, 1);
   border-color: rgba(76, 175, 80, 1);
   box-shadow: none;
+}
+
+@media screen and (max-width: 768px) {
+  .questions {
+    margin: 30px auto;
+
+    &::before {
+      width: 90vw;
+      height: calc(90vw - 80px);
+      top: calc(50% - 45vw + 40px);
+      left: calc(50% - 45vw);
+    }
+
+    &__item {
+      flex-direction: column;
+    }
+
+    &__sentence {
+      width: 100%;
+    }
+
+    &__radio__middle {
+      width: 50%;
+    }
+  }
+
+  .el-radio-button {
+    display: inline;
+  }
 }
 </style>
