@@ -71,8 +71,8 @@ export default {
   }
 
   &__contents {
-    width: 90%;
-    margin: 50px auto;
+    width: 80%;
+    margin: 100px auto;
     background-color: white;
   }
 }
